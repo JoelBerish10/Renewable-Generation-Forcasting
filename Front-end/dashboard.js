@@ -8,3 +8,21 @@ document.querySelectorAll('.time-button').forEach((button) => {
 });
 const updated = document.querySelector('.sidebar-bottom small');
 if (updated) updated.textContent = `Snapshot ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
+const sidebar = document.querySelector('.sidebar');
+if (sidebar) {
+  const toggle = document.createElement('button');
+  toggle.className = 'sidebar-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-label', 'Collapse sidebar');
+  toggle.setAttribute('aria-expanded', 'true');
+  toggle.textContent = '‹';
+  document.body.append(toggle);
+  toggle.addEventListener('click', () => {
+    const collapsed = document.body.classList.toggle('sidebar-collapsed');
+    toggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+  });
+}
+
+document.querySelector('.avatar')?.addEventListener('click', () => { window.location.href = 'login.html'; });
