@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in to RenewCast" /><title>Sign in — RenewCast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="login.css" />
+</head>
+<body class="login-body">
+  <main class="login-page">
+    <a class="brand login-brand" href="index.html"><span class="brand-mark">⚡</span> RENEW<span>CAST</span></a>
+    <section class="login-layout">
+      <section class="login-story"><p class="eyebrow"><span></span> RENEWABLE INTELLIGENCE</p><h1>Forecast with <em>confidence.</em></h1><p>Bring weather, machine learning, and renewable generation into one clear operational view.</p><div class="story-stat"><strong>944 <small>kW</small></strong><span>Combined output forecast<br /><i></i> Models online</span></div><div class="login-art"><div class="login-orbit orbit-a"></div><div class="login-orbit orbit-b"></div><div class="login-sun">☀</div><div class="login-wind">〰</div><div class="login-chip">● LIVE GRID DATA</div></div></section>
+      <section class="auth-card"><a class="back-home" href="index.html">← Back to energy selection</a><div class="auth-head"><p class="eyebrow"><span></span> YOUR RENEWCAST ACCOUNT</p><h2 id="auth-title">Welcome back.</h2><p id="auth-copy">Sign in to view your energy intelligence workspace.</p></div><div class="auth-tabs" role="tablist"><button class="active" type="button" data-mode="signin">Sign in</button><button type="button" data-mode="signup">Create account</button></div><form id="auth-form" novalidate><label class="signup-only">FULL NAME<input name="name" type="text" placeholder="Your name" /></label><label>WORK EMAIL<input name="email" type="email" placeholder="you@company.com" required /></label><label>PASSWORD<div class="password-wrap"><input name="password" type="password" placeholder="Enter your password" required minlength="6" /><button class="password-toggle" type="button" aria-label="Show password">◉</button></div></label><label class="signup-only">CONFIRM PASSWORD<div class="password-wrap"><input name="confirmPassword" type="password" placeholder="Repeat your password" /><button class="password-toggle" type="button" aria-label="Show password">◉</button></div></label><div class="form-row"><label class="remember"><input name="remember" type="checkbox" /> Remember me</label><a href="#" id="forgot-password">Forgot password?</a></div><button class="button auth-submit" type="submit"><span id="submit-label">Sign in</span> <b>↗</b></button><p id="auth-status" class="auth-status" role="status" aria-live="polite"></p></form><p class="auth-switch">New to RenewCast? <button type="button" data-switch="signup">Create an account</button></p><p class="demo-note">Demo authentication: account information is stored only in this browser.</p></section>
+    </section>
+    <footer class="login-footer"><span>© 2026 RenewCast</span><a href="about.html">About</a><a href="contact.html">Contact</a><a href="wind.html">Wind dashboard</a><a href="solar.html">Solar dashboard</a></footer>
+  </main><script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RenewCast Wind Power Forecasting dashboard" />
+  <title>Wind Power Forecasting — RenewCast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="wind.css" />
+</head>
+<body class="dashboard-body">
+  <aside class="sidebar">
+    <a class="brand sidebar-brand" href="index.html"><span class="brand-mark">⚡</span> RENEW<span>CAST</span></a>
+    <p class="side-caption">POWER FORECASTING</p>
+    <nav class="side-nav" aria-label="Wind dashboard navigation">
+      <a class="active" href="wind.html"><span>▦</span> Dashboard</a>
+      <a href="#forecast"><span>⌁</span> Forecast</a>
+      <a href="#analytics"><span>◔</span> Analytics</a>
+      <a href="#data"><span>▤</span> Data</a>
+      <a href="about.html"><span>◌</span> About</a>
+      <a href="contact.html"><span>✉</span> Contact</a>
+      <a href="learn.html"><span>↗</span> Learn more</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span> SYSTEMS NOMINAL<br /><small>Last updated just now</small><a href="login.html">Account →</a></div>
+  </aside>
+
+  <main class="dashboard">
+    <a class="back-link" href="index.html">← Back to energy selection</a>
+    <header class="dashboard-header">
+      <div><p class="eyebrow"><span></span> ENERGY INTELLIGENCE</p><h1>Wind power <em>forecasting.</em></h1><div class="energy-toggle" aria-label="Switch energy dashboard"><a class="selected" href="wind.html">🌬 Wind <i></i></a><span></span><a href="solar.html">☀ Solar <i></i></a></div></div>
+      <div class="header-actions"><button class="location-select">Wind Farm A <span>⌄</span></button><button class="avatar" aria-label="Account">K</button></div>
+    </header>
+
+    <section class="dashboard-intro">
+      <div><div class="title-line"><span class="wind-title-icon">〰</span><h2>Wind Power Forecast</h2></div><p>AI-powered generation intelligence for your renewable fleet.</p></div>
+      <div class="model-status"><span class="status-dot"></span> MODEL ONLINE <small>XGBoost v4.2</small></div>
+    </section>
+
+    <section class="stat-grid" aria-label="Current wind conditions">
+      <article class="stat-card"><div class="stat-icon cyan-icon">〰</div><p>WIND SPEED</p><strong>8.4 <small>m/s</small></strong><span class="trend">↑ 12.4% <i>vs last hour</i></span></article>
+      <article class="stat-card featured-stat"><div class="stat-icon lime-icon">⚡</div><p>PREDICTED POWER</p><strong>428 <small>kW</small></strong><span class="next-hour">NEXT HOUR <i>↗</i></span></article>
+      <article class="stat-card"><div class="stat-icon gold-icon">◎</div><p>MODEL ACCURACY</p><strong>94.2<small>%</small></strong><span class="model-name">XGBOOST MODEL</span></article>
+      <article class="stat-card"><div class="stat-icon coral-icon">♨</div><p>TEMPERATURE</p><strong>29<small>°C</small></strong><span class="weather-note">Feels like 31°</span></article>
+    </section>
+
+    <section id="forecast" class="dashboard-grid">
+      <article class="panel forecast-panel">
+        <div class="panel-head"><div><p class="panel-kicker">GENERATION OUTLOOK</p><h3>24-hour power forecast</h3></div><button class="time-button">24 HOURS <span>⌄</span></button></div>
+        <div class="legend"><span><i class="legend-dot"></i> Predicted power</span><span><i class="legend-dash"></i> Turbine capacity</span></div>
+        <div class="chart-wrap">
+          <div class="axis-labels"><span>500</span><span>400</span><span>300</span><span>200</span><span>100</span></div>
+          <svg class="forecast-chart" viewBox="0 0 700 265" preserveAspectRatio="none" role="img" aria-label="Forecast rises from 210 to 480 kilowatts at 2 PM then declines to 260 kilowatts.">
+            <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#2bd4d7" stop-opacity=".34"/><stop offset="1" stop-color="#2bd4d7" stop-opacity="0"/></linearGradient></defs>
+            <g class="grid-lines"><path d="M0 20H700M0 72H700M0 124H700M0 176H700M0 228H700"/></g>
+            <path class="capacity-line" d="M0 44H700"/>
+            <path class="chart-area" d="M0 190 L55 190 L110 178 L165 145 L220 134 L275 95 L330 95 L385 52 L440 38 L495 83 L550 116 L605 133 L660 168 L700 176 L700 228 L0 228Z"/>
+            <path class="chart-line" d="M0 190 L55 190 L110 178 L165 145 L220 134 L275 95 L330 95 L385 52 L440 38 L495 83 L550 116 L605 133 L660 168 L700 176"/>
+            <circle class="chart-point" cx="440" cy="38" r="6"/><circle class="chart-ring" cx="440" cy="38" r="11"/>
+          </svg>
+          <div class="x-labels"><span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>18:00</span><span>20:00</span></div>
+        </div>
+      </article>
+
+      <article class="panel insight-panel"><div class="panel-kicker">RENEWCAST AI</div><div class="insight-bolt">⚡</div><p class="insight-label">HIGH GENERATION WINDOW</p><h3>Strong winds ahead.</h3><p>Favourable wind conditions are expected from <b>12 PM–4 PM</b>, with peak output near 2 PM.</p><div class="insight-recommendation"><small>RECOMMENDATION</small><span>Prepare for higher grid availability. <b>→</b></span></div></article>
+    </section>
+
+    <section class="lower-grid">
+      <article id="data" class="panel conditions-panel"><div class="panel-head"><div><p class="panel-kicker">LIVE WEATHER DATA</p><h3>Wind conditions</h3></div><span class="live-label"><i></i> LIVE</span></div><div class="condition-list"><div><span>〰</span><p>Wind speed<strong>8.4 m/s</strong></p></div><div><span>◈</span><p>Direction<strong>245° SW</strong></p></div><div><span>◌</span><p>Humidity<strong>63%</strong></p></div><div><span>♨</span><p>Temperature<strong>29°C</strong></p></div><div><span>◒</span><p>Pressure<strong>1012 hPa</strong></p></div><div><span>⚙</span><p>Active turbines<strong>12 / 12</strong></p></div></div></article>
+      <article id="analytics" class="panel turbine-panel"><div class="panel-head"><div><p class="panel-kicker">FLEET PERFORMANCE</p><h3>Turbine generation</h3></div><a href="#analytics">View analytics →</a></div><div class="turbine-bars"><div><span>T-01</span><i><b style="height:82%"></b></i><em>36 kW</em></div><div><span>T-02</span><i><b style="height:90%"></b></i><em>40 kW</em></div><div><span>T-03</span><i><b style="height:75%"></b></i><em>33 kW</em></div><div><span>T-04</span><i><b style="height:96%"></b></i><em>42 kW</em></div><div><span>T-05</span><i><b style="height:84%"></b></i><em>37 kW</em></div><div><span>T-06</span><i><b style="height:91%"></b></i><em>40 kW</em></div></div></article>
+    </section>
+    <section class="intelligence panel"><div><p class="panel-kicker">RENEWABLE INTELLIGENCE</p><h3>AI forecast summary</h3><p>Data pipeline: weather telemetry → Wind ML model → generation forecast.</p></div><div class="intelligence-items"><span>🌬 Wind generation is expected to increase by <b>18%</b> over the next 4 hours.</span><span>☀ Solar generation is expected to peak around <b>1:00 PM</b>.</span><span>⚡ Combined renewable output is expected to reach <b>944 kW</b>.</span></div></section>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
