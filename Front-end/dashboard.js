@@ -28,11 +28,17 @@ if (sidebar) {
 document.querySelector('.avatar')?.addEventListener('click', () => { window.location.href = 'login.html'; });
 
 const sideLinks = [...document.querySelectorAll('.side-nav a[href^="#"]')];
+const allSideLinks = [...document.querySelectorAll('.side-nav a')];
+const moveSidebarSelection = (link) => {
+  const index = allSideLinks.indexOf(link);
+  if (index >= 0) sidebar?.style.setProperty('--active-nav-index', index);
+};
 const setActiveLink = (targetId) => {
   sideLinks.forEach((link) => {
     const selected = link.getAttribute('href') === `#${targetId}`;
     link.classList.toggle('active', selected);
     link.toggleAttribute('aria-current', selected);
+    if (selected) moveSidebarSelection(link);
   });
 };
 
@@ -43,8 +49,11 @@ const setDashboardActive = () => {
     const selected = link === dashboardLink;
     link.classList.toggle('active', selected);
     link.toggleAttribute('aria-current', selected);
+    if (selected) moveSidebarSelection(link);
   });
 };
+
+allSideLinks.forEach((link) => link.addEventListener('click', () => moveSidebarSelection(link)));
 
 sideLinks.forEach((link) => {
   link.addEventListener('click', () => setActiveLink(link.getAttribute('href').slice(1)));
