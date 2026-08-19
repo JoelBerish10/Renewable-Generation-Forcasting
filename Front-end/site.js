@@ -23,4 +23,25 @@
       menuButton.setAttribute('aria-expanded', String(open));
     });
   }
+
+  document.querySelectorAll('.solution-card').forEach((card) => {
+    const destination = card.querySelector('a[href]');
+    if (!destination) return;
+    card.tabIndex = 0;
+    card.setAttribute('role', 'link');
+    card.setAttribute('aria-label', `Open ${destination.textContent.trim()}`);
+    card.addEventListener('click', (event) => {
+      if (!event.target.closest('a, button')) destination.click();
+    });
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        destination.click();
+      }
+    });
+  });
+
+  document.querySelectorAll('.energy-toggle a').forEach((link) => {
+    link.addEventListener('click', () => document.body.classList.add('energy-switching'));
+  });
 })();

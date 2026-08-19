@@ -26,3 +26,44 @@ if (sidebar) {
 }
 
 document.querySelector('.avatar')?.addEventListener('click', () => { window.location.href = 'login.html'; });
+
+const sideLinks = [...document.querySelectorAll('.side-nav a[href^="#"]')];
+const setActiveLink = (targetId) => {
+  sideLinks.forEach((link) => {
+    const selected = link.getAttribute('href') === `#${targetId}`;
+    link.classList.toggle('active', selected);
+    link.toggleAttribute('aria-current', selected);
+  });
+};
+
+const dashboardLink = document.querySelector('.side-nav a[href$=".html"]');
+const setDashboardActive = () => {
+  if (!dashboardLink) return;
+  document.querySelectorAll('.side-nav a').forEach((link) => {
+    const selected = link === dashboardLink;
+    link.classList.toggle('active', selected);
+    link.toggleAttribute('aria-current', selected);
+  });
+};
+
+sideLinks.forEach((link) => {
+  link.addEventListener('click', () => setActiveLink(link.getAttribute('href').slice(1)));
+});
+
+const dashboardSections = [
+  ['forecast', document.querySelector('#forecast')],
+  ['data', document.querySelector('#data')],
+  ['analytics', document.querySelector('#analytics')]
+].filter(([, section]) => section);
+
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) setActiveLink(visible.target.id);
+  }, { rootMargin: '-18% 0px -55% 0px', threshold: [0.1, 0.35] });
+  dashboardSections.forEach(([, section]) => sectionObserver.observe(section));
+}
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY < 80) setDashboardActive();
+}, { passive: true });
